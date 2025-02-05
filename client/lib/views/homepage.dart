@@ -1,3 +1,4 @@
+import 'package:client/views/user_section.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -37,12 +38,6 @@ class _HomepageState extends State<Homepage> {
         child: ListView(
           children: [
             online ? const DataNotification() : Container(),
-            // ElevatedButton(
-            //     onPressed: () {
-            //       Navigator.push(context,
-            //           MaterialPageRoute(builder: (context) => const ClientSection()));
-            //     },
-            //     child: const Text('Client section')),
             ElevatedButton(
                 onPressed: () {
                   if (!online) {
@@ -50,9 +45,15 @@ class _HomepageState extends State<Homepage> {
                     return;
                   }
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const WorkoutsSection()));
+                      MaterialPageRoute(builder: (context) => const TrainerSection()));
                 },
-                child: const Text('Workouts')),
+                child: const Text('Trainer Section')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const UserSection()));
+                },
+                child: const Text('User Section')),
           ],
         ),
       ),

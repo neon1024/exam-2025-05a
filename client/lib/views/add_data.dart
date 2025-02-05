@@ -64,7 +64,7 @@ class _AddDataState extends State<AddData> {
                 String? status = statusController.text;
                 int participants = int.tryParse(participantsController.text) != null ? int.parse(participantsController.text) : 1;
                 String? type = typeController.text;
-                int? duration = int.tryParse(durationController.text);
+                int duration = int.tryParse(durationController.text) != null ? int.parse(durationController.text) : 1;
 
                 if (name.isNotEmpty) {
                   final newWorkout = Workout(

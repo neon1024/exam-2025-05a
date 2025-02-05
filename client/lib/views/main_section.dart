@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:client/screens/workout_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -9,14 +10,14 @@ import '../views/add_data.dart';
 import '../widgets/message.dart';
 
 
-class WorkoutsSection extends StatefulWidget {
-  const WorkoutsSection({super.key});
+class TrainerSection extends StatefulWidget {
+  const TrainerSection({super.key});
 
   @override
-  _WorkoutsSectionState createState() => _WorkoutsSectionState();
+  _TrainerSectionState createState() => _TrainerSectionState();
 }
 
-class _WorkoutsSectionState extends State<WorkoutsSection> {
+class _TrainerSectionState extends State<TrainerSection> {
   var logger = Logger();
   bool online = true;
   bool isLoading = false;
@@ -31,7 +32,7 @@ class _WorkoutsSectionState extends State<WorkoutsSection> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Employee Section'),
+        title: const Text('Trainer Section'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(25.0),
@@ -86,8 +87,16 @@ class Element extends StatelessWidget {
                 ListTile(
                   title: Text(data.name),
                   subtitle: Text(
-                    'Type: ${data.type}, Duration: ${data.duration}, Participants: ${data.participants}',
+                    'ID: ${data.id}, Status: ${data.status}, Trainer: ${data.trainer}, Type: ${data.type}, Duration: ${data.duration}, Participants: ${data.participants}',
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => WorkoutDetailScreen(workout: data),
+                      ),
+                    );
+                  },
                 ),
             ],
           );
