@@ -1,22 +1,22 @@
 class Workout {
   final int? id;
   final String name;
-  final String trainer;
-  final String description;
-  final String status;
+  final String? trainer;
+  final String? description;
+  final String? status;
   final int participants;
-  final String type;
-  final int duration;
+  final String? type;
+  final int? duration;
 
   const Workout({
     this.id,
     required this.name,
-    required this.trainer,
-    required this.description,
-    required this.status,
-    required this.participants,
-    required this.type,
-    required this.duration,
+    this.trainer = '',
+    this.description = '',
+    this.status = '',
+    this.participants = 1,
+    this.type = '',
+    this.duration = 0,
     });
 
   factory Workout.fromJSON(Map<String, dynamic> json) {
